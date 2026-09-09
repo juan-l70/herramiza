@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { tools } from '../../data/tools';
+---
+<BaseLayout title="Herramientas digitales | Herramiza" description="Directorio de herramientas digitales para trabajo, estudio y creación."><div class="container section"><Breadcrumbs items={[{ name: 'Inicio', href: '/' }, { name: 'Herramientas' }]} /><p class="eyebrow">Directorio</p><h1>Herramientas digitales</h1><p class="lede">Fichas claras para descubrir, entender y comparar herramientas.</p><div class="card-grid tools">{tools.map(tool => <article class="tool"><p class="eyebrow">{tool.category} · {tool.pricing}</p><h2><a href={`/herramientas/${tool.slug}/`}>{tool.name}</a></h2><p>{tool.description}</p></article>)}</div></div></BaseLayout>
+<style>.tools { margin-top: var(--space-4); }.tool { padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface); border: 1px solid var(--color-line); }.tool h2 { margin: 0 0 var(--space-1); font-size: 1.4rem; }.tool p:last-child { color: var(--color-muted); }</style>

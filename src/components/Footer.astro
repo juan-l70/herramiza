@@ -1,0 +1,5 @@
+---
+import { site } from '../data/site';
+---
+<footer><div class="container footer-inner"><p><strong>{site.name}</strong> — {site.tagline}</p><p>© {new Date().getFullYear()} {site.name}. Contenido informativo y práctico.</p></div></footer>
+<style>footer { border-top: 1px solid var(--color-line); background: var(--color-surface); color: var(--color-muted); font-size: .875rem; }.footer-inner { padding-block: var(--space-4); } footer p { margin: 0 0 var(--space-1); }</style>

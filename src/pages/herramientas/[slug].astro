@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { tools } from '../../data/tools';
+export function getStaticPaths() { return tools.map(tool => ({ params: { slug: tool.slug }, props: { tool } })); }
+const { tool } = Astro.props;
+const schema = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: tool.name, applicationCategory: tool.category, description: tool.description, url: tool.website, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } };
+---
+<BaseLayout title={`${tool.name}: qué es y para qué sirve | Herramiza`} description={tool.description}><div class="container"><Breadcrumbs items={[{ name: 'Inicio', href: '/' }, { name: 'Herramientas', href: '/herramientas/' }, { name: tool.name }]} /></div><article class="reading section"><p class="eyebrow">{tool.category} · {tool.pricing}</p><h1>{tool.name}</h1><p class="lede">{tool.description}</p><AdSlot placement="top" /><h2>Información esencial</h2><dl><div><dt>Modelo de precio</dt><dd>{tool.pricing}</dd></div><div><dt>Sitio oficial</dt><dd><a href={tool.website} rel="nofollow noopener noreferrer" target="_blank">Visitar {tool.name}</a></dd></div></dl><p>Esta ficha es una base editorial. Añade aquí los casos de uso, ventajas, límites, precios verificados y una experiencia de uso real antes de publicar recomendaciones definitivas.</p><script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} /></article></BaseLayout>
+<style>dl { display: grid; gap: var(--space-2); } dl div { padding: var(--space-2); border: 1px solid var(--color-line); border-radius: var(--radius-sm); } dt { font-size: .875rem; font-weight: 700; } dd { margin: 0; }</style>

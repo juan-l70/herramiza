@@ -1,0 +1,9 @@
+---
+import { site } from '../data/site';
+interface Crumb { name: string; href?: string; }
+const { items } = Astro.props as { items: Crumb[] };
+const jsonLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.name, item: item.href ? new URL(item.href, site.url).href : undefined })) };
+---
+<nav class="breadcrumbs" aria-label="Migas de pan"><ol>{items.map(item => <li>{item.href ? <a href={item.href}>{item.name}</a> : <span aria-current="page">{item.name}</span>}</li>)}</ol></nav>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<style>.breadcrumbs { margin-block: var(--space-3); color: var(--color-muted); font-size: .875rem; }.breadcrumbs ol { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; padding: 0; list-style: none; }.breadcrumbs li + li::before { margin-right: .35rem; content: '/'; }</style>

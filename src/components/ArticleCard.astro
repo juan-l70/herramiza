@@ -1,0 +1,7 @@
+---
+import type { CollectionEntry } from 'astro:content';
+const { article } = Astro.props as { article: CollectionEntry<'articles'> };
+const { title, description, category, publishedAt } = article.data;
+---
+<article class="card"><p class="category"><a href={`/${category}/`}>{category}</a></p><h3><a href={`/${category}/${article.id}/`}>{title}</a></h3><p>{description}</p><time datetime={publishedAt.toISOString()}>{publishedAt.toLocaleDateString('es-ES', { dateStyle: 'medium' })}</time></article>
+<style>.card { display: flex; flex-direction: column; padding: var(--space-3); border: 1px solid var(--color-line); border-radius: var(--radius-md); background: var(--color-surface); box-shadow: var(--shadow-card); }.card h3 { margin: 0 0 var(--space-2); }.card h3 a { color: var(--color-ink); text-decoration: none; }.card p:not(.category) { color: var(--color-muted); }.category { margin: 0 0 var(--space-1); font-size: .8125rem; font-weight: 700; text-transform: uppercase; }.card time { margin-top: auto; color: var(--color-muted); font-size: .8125rem; }</style>

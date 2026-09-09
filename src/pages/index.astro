@@ -1,0 +1,13 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { categories } from '../data/site';
+const articles = ((await getCollection('articles')) as CollectionEntry<'articles'>[]).filter(article => !article.data.draft).sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+<BaseLayout title="Herramiza | Herramientas digitales para hacer más" description="Guías, comparativas y herramientas digitales para estudiar, trabajar y crear mejor.">
+  <section class="hero"><div class="container"><p class="eyebrow">Herramientas digitales para hacer más</p><h1>Decide mejor qué usar para trabajar, estudiar y crear.</h1><p class="lede">Guías útiles, comparativas claras y recomendaciones honestas sobre software, IA y productividad.</p><a class="button" href="/herramientas/">Explorar herramientas</a></div></section>
+  <section class="section"><div class="container"><h2>Explora por tema</h2><div class="card-grid categories">{categories.map(category => <a class="category-card" href={`/${category.slug}/`}><h3>{category.name}</h3><p>{category.description}</p></a>)}</div></div></section>
+  <section class="section latest"><div class="container"><h2>Últimos artículos</h2><div class="card-grid">{articles.map(article => <ArticleCard article={article} />)}</div></div></section>
+</BaseLayout>
+<style>.hero { padding-block: clamp(4rem, 12vw, 8rem); background: var(--color-accent); }.hero h1 { max-width: 18ch; }.hero .button { margin-top: var(--space-2); }.latest { background: var(--color-surface); }.category-card { padding: var(--space-3); border: 1px solid var(--color-line); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-ink); text-decoration: none; }.category-card h3 { margin: 0 0 var(--space-1); }.category-card p { margin: 0; color: var(--color-muted); }</style>

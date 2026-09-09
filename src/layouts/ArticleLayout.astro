@@ -1,0 +1,13 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { site } from '../data/site';
+const { article } = Astro.props as { article: CollectionEntry<'articles'> };
+const { title, description, category, publishedAt, updatedAt, author, image, imageAlt } = article.data;
+const url = new URL(`/${category}/${article.id}/`, site.url).href;
+const articleSchema = { '@context': 'https://schema.org', '@type': 'Article', headline: title, description, datePublished: publishedAt.toISOString(), ...(updatedAt && { dateModified: updatedAt.toISOString() }), author: { '@type': 'Person', name: author }, mainEntityOfPage: url, ...(image && { image: new URL(image, site.url).href }) };
+---
+<BaseLayout title={`${title} | Herramiza`} description={description} image={image} type="article"><div class="container"><Breadcrumbs items={[{ name: 'Inicio', href: '/' }, { name: category, href: `/${category}/` }, { name: title }]} /></div><article class="reading article"><header><p class="eyebrow"><a href={`/${category}/`}>{category}</a></p><h1>{title}</h1><p class="lede">{description}</p><p class="byline">Por {author} · <time datetime={publishedAt.toISOString()}>Publicado {publishedAt.toLocaleDateString('es-ES', { dateStyle: 'long' })}</time>{updatedAt && <> · Actualizado {updatedAt.toLocaleDateString('es-ES', { dateStyle: 'long' })}</>}</p>{image && <img src={image} alt={imageAlt || ''} width="1200" height="630" loading="eager" fetchpriority="high" />}</header><AdSlot placement="top" /><div class="prose"><slot /></div><AdSlot placement="bottom" /></article><script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} /></BaseLayout>
+<style>.article { padding-block: var(--space-3) var(--space-6); }.article h1 { margin-bottom: var(--space-2); }.byline { color: var(--color-muted); font-size: .9rem; }.article img { margin-block: var(--space-4); border-radius: var(--radius-md); background: var(--color-line); aspect-ratio: 1200 / 630; object-fit: cover; }.prose :global(h2) { margin-top: var(--space-5); }.prose :global(table) { display: block; overflow-x: auto; width: 100%; border-collapse: collapse; }.prose :global(th), .prose :global(td) { padding: .75rem; border: 1px solid var(--color-line); text-align: left; }.prose :global(th) { background: var(--color-accent); }</style>

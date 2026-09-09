@@ -1,0 +1,13 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { categories } from '../../data/site';
+// /herramientas/ es el directorio de fichas de software; las demás entradas son categorías editoriales.
+export function getStaticPaths() { return categories.filter(category => category.slug !== 'herramientas').map(category => ({ params: { category: category.slug }, props: { category } })); }
+const { category } = Astro.props;
+const articles = ((await getCollection('articles')) as CollectionEntry<'articles'>[]).filter(article => article.data.category === category.slug && !article.data.draft).sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+<BaseLayout title={`${category.name} | Herramiza`} description={category.description}><div class="container section"><Breadcrumbs items={[{ name: 'Inicio', href: '/' }, { name: category.name }]} /><p class="eyebrow">Categoría</p><h1>{category.name}</h1><p class="lede">{category.description}</p><div class="card-grid articles">{articles.map(article => <ArticleCard article={article} />)}</div>{articles.length === 0 && <p>Aún no hay artículos en esta categoría.</p>}</div></BaseLayout>
+<style>.articles { margin-top: var(--space-4); }</style>

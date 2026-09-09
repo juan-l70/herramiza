@@ -1,0 +1,6 @@
+---
+interface Props { placement: 'top' | 'in-article' | 'middle' | 'bottom'; label?: string; enabled?: boolean; }
+const { placement, label = 'Espacio publicitario', enabled = false } = Astro.props;
+---
+{enabled && <aside class="ad-slot" aria-label={label} data-placement={placement}><span>{label}</span></aside>}
+<style>.ad-slot { display: grid; min-height: 7rem; margin-block: var(--space-4); place-items: center; border: 1px dashed var(--color-line); border-radius: var(--radius-sm); color: var(--color-muted); font-size: .75rem; }</style>
