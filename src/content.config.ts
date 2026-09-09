@@ -5,6 +5,7 @@ const articles = defineCollection({
   loader: glob({ base: './src/content/articles', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string().max(70),
+    slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'El slug debe usar minúsculas, números y guiones.'),
     description: z.string().max(160),
     category: z.enum(['ia', 'software', 'productividad', 'herramientas', 'tutoriales', 'comparativas']),
     publishedAt: z.coerce.date(),

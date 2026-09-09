@@ -1,5 +1,6 @@
 ---
 title: "Mejores herramientas de IA para estudiantes"
+slug: "mejores-herramientas-ia-para-estudiantes"
 description: "Una guía inicial para elegir herramientas de inteligencia artificial útiles durante tus estudios."
 category: ia
 publishedAt: 2026-09-09

@@ -17,7 +17,7 @@ public/             # Archivos públicos estáticos (robots.txt e imágenes opti
 
 ## Decisiones de escala
 
-- **Contenido:** cada artículo vive en un Markdown con frontmatter validado por `content.config.ts`. No se mezclan datos, contenido y presentación.
+- **Contenido:** cada artículo vive en un Markdown con frontmatter validado por `content.config.ts`. Incluye siempre un `slug` único, en minúsculas y con guiones. No se mezclan datos, contenido y presentación.
 - **URLs:** el artículo `src/content/articles/ia/mi-articulo.md` genera `/ia/mi-articulo/`. Las categorías están centralizadas en `src/data/site.ts`. `/herramientas/` se reserva al directorio de fichas de productos, para evitar competir con una categoría editorial.
 - **SEO:** `BaseHead` controla title, description, canonical, Open Graph y Twitter. Las páginas relevantes emiten Schema.org real: WebSite, Organization, BreadcrumbList, Article y SoftwareApplication. `@astrojs/sitemap` genera el sitemap; `public/robots.txt` lo declara.
 - **Imágenes:** guarda originales ligeros en `public/images/` y referencia una ruta absoluta (`/images/archivo.webp`) en el frontmatter. Reserva `width` y `height` para evitar CLS; convierte imágenes de producción a WebP/AVIF antes de publicarlas.
@@ -36,7 +36,7 @@ Define el dominio real en `astro.config.mjs` antes del despliegue; de ello depen
 
 ## Operaciones habituales
 
-- **Nuevo artículo:** crea `src/content/articles/<categoria>/<slug>.md`, copia el frontmatter de ejemplo y completa los campos. La categoría debe existir en el enum de `src/content.config.ts` y en `src/data/site.ts`.
+- **Nuevo artículo:** crea `src/content/articles/<categoria>/<slug>.md`, copia el frontmatter de ejemplo y completa los campos, incluido `slug`. La categoría debe existir en el enum de `src/content.config.ts` y en `src/data/site.ts`.
 - **Nueva categoría:** añade el objeto en `src/data/site.ts`, incorpora el slug al enum en `src/content.config.ts` y publica su primer artículo. La página de categoría se genera automáticamente.
 - **Nueva herramienta:** agrega un objeto a `src/data/tools.ts`; la ficha y el directorio se generan automáticamente.
 - **Nuevo anuncio:** importa `AdSlot` en el layout o componente que corresponda. No repitas snippets de AdSense: la futura integración se concentra en `src/components/AdSlot.astro`.
