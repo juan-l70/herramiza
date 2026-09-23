@@ -1,9 +1,9 @@
 export const site = {
   name: 'Herramiza',
   tagline: 'Herramientas digitales para hacer más.',
-  url: 'https://herramiza.com',
+  url: 'https://herramiza.vercel.app',
   locale: 'es_ES',
-  organization: { name: 'Herramiza', url: 'https://herramiza.com' },
+  organization: { name: 'Herramiza', url: 'https://herramiza.vercel.app' },
 } as const;
 
 export const categories = [

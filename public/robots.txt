@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://herramiza.com/sitemap-index.xml
+Sitemap: https://herramiza.vercel.app/sitemap-index.xml
