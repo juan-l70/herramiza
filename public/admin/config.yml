@@ -1,6 +1,6 @@
 backend:
   name: turbo-github
-  turbo_site_id: 7e875dce-3abf-4bf2-8a2f-11c766745d99
+  turbo_site_id: 30b81f9d-486a-47c2-9913-91ce8386f629
   branch: main
 
 media_folder: public/images/articles
