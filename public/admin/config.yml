@@ -1,0 +1,40 @@
+backend:
+  name: turbo-github
+  turbo_site_id: 7e875dce-3abf-4bf2-8a2f-11c766745d99
+  branch: main
+
+media_folder: public/images/articles
+public_folder: /images/articles
+
+collections:
+  - name: articles
+    label: Artículos
+    label_singular: Artículo
+    folder: src/content/articles
+    create: true
+    extension: md
+    format: frontmatter
+    path: "{{category}}/{{slug}}"
+    slug: "{{slug}}"
+    fields:
+      - { label: Título, name: title, widget: string }
+      - label: Slug
+        name: slug
+        widget: string
+        hint: "Solo minúsculas, números y guiones. Define la URL del artículo."
+        pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Usa solo minúsculas, números y guiones."]
+      - label: Categoría
+        name: category
+        widget: select
+        options: [ia, herramientas, software, productividad, tutoriales, comparativas]
+      - { label: Descripción, name: description, widget: text, hint: "Resumen de hasta 160 caracteres." }
+      - { label: Meta title, name: metaTitle, widget: string, required: false, hint: "Opcional. Máximo recomendado: 70 caracteres." }
+      - { label: Meta description, name: metaDescription, widget: text, required: false, hint: "Opcional. Máximo recomendado: 160 caracteres." }
+      - { label: Fecha de publicación, name: publishedAt, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - { label: Autor, name: author, widget: string }
+      - { label: Imagen destacada, name: image, widget: image, required: false }
+      - { label: Texto alternativo de la imagen, name: imageAlt, widget: string, required: false }
+      - { label: Etiquetas, name: tags, widget: list, required: false }
+      - { label: Artículo destacado, name: featured, widget: boolean, default: false, required: false }
+      - { label: Borrador, name: draft, widget: boolean, default: true }
+      - { label: Contenido, name: body, widget: markdown }
