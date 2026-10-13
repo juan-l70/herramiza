@@ -10,6 +10,7 @@ draft: false
 faq:
   - question: ¿Las herramientas de IA sustituyen el estudio?
     answer: No. Funcionan mejor como apoyo para comprender, organizar y practicar.
+image: images.jpg
 tags:
   - ia
   - estudiantes
