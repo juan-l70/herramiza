@@ -16,7 +16,7 @@ tags:
   - estudio
   - productividad
 featured: false
-draft: true
+draft: false
 ---
 # Cómo usar ChatGPT para estudiar mejor
 
