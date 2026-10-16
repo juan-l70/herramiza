@@ -9,7 +9,7 @@ metaDescription: Descubre cómo utilizar ChatGPT para estudiar mejor con técnic
   prácticas de explicación, resúmenes y ejercicios.
 publishedAt: 2026-10-16
 author: Herramiza
-image: b33f0d10bab5c0d68a006844f7eda264.jpg
+image: https://i.pinimg.com/1200x/b3/3f/0d/b33f0d10bab5c0d68a006844f7eda264.jpg
 tags:
   - ChatGPT
   - inteligencia artificial
