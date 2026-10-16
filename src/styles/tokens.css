@@ -1,15 +1,20 @@
 :root {
-  --color-ink: #10202b;
-  --color-muted: #53636e;
-  --color-surface: #ffffff;
-  --color-canvas: #f5f7f8;
-  --color-line: #dce3e6;
-  --color-brand: #147a6c;
-  --color-brand-dark: #0d594f;
-  --color-accent: #e6f4f1;
+  --color-ink: #102538;
+  --color-ink-soft: #244158;
+  --color-muted: #5c6d7b;
+  --color-surface: #fffefb;
+  --color-canvas: #f5f7f5;
+  --color-line: #d8e0df;
+  --color-brand: #087c70;
+  --color-brand-dark: #075d55;
+  --color-brand-pale: #dff5ef;
+  --color-accent: #cbff62;
+  --color-accent-ink: #15332d;
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --space-1: .5rem; --space-2: 1rem; --space-3: 1.5rem; --space-4: 2rem; --space-5: 3rem; --space-6: 4rem;
-  --radius-sm: .5rem; --radius-md: .75rem; --radius-lg: 1rem;
-  --content-width: 72rem; --reading-width: 44rem;
-  --shadow-card: 0 8px 24px rgb(16 32 43 / 7%);
+  --font-display: Iowan Old Style, Palatino Linotype, Book Antiqua, Palatino, ui-serif, Georgia, serif;
+  --space-1: 0.5rem; --space-2: 0.75rem; --space-3: 1rem; --space-4: 1.5rem; --space-5: 2rem; --space-6: 3rem; --space-7: 4.5rem;
+  --radius-sm: 0.5rem; --radius-md: 0.875rem; --radius-lg: 1.25rem;
+  --content-width: 76rem; --reading-width: 46rem;
+  --shadow-card: 0 10px 28px rgb(16 37 56 / 7%);
+  --shadow-raised: 0 16px 38px rgb(16 37 56 / 12%);
 }

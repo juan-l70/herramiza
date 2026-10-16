@@ -1,5 +1,5 @@
 ---
 import { site } from '../data/site';
 ---
-<footer><div class="container footer-inner"><p><strong>{site.name}</strong> — {site.tagline}</p><p>© {new Date().getFullYear()} {site.name}. Contenido informativo y práctico.</p></div></footer>
-<style>footer { border-top: 1px solid var(--color-line); background: var(--color-surface); color: var(--color-muted); font-size: .875rem; }.footer-inner { padding-block: var(--space-4); } footer p { margin: 0 0 var(--space-1); }</style>
+<footer><div class="container footer-inner"><div><a class="footer-brand" href="/">{site.name}</a><p>{site.tagline}</p></div><p>© {new Date().getFullYear()} {site.name}. Guías y herramientas para trabajar mejor.</p></div></footer>
+<style>footer { border-top: 1px solid var(--color-line); background: var(--color-ink); color: #d7e1e4; font-size: .9rem; }.footer-inner { display: grid; gap: var(--space-3); padding-block: var(--space-5); }.footer-brand { color: white; font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; text-decoration: none; } footer p { max-width: 42rem; margin: var(--space-1) 0 0; } @media (min-width: 48rem) { .footer-inner { grid-template-columns: 1fr auto; align-items: end; } .footer-inner > p { text-align: right; } }</style>

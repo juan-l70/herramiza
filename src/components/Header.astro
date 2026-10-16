@@ -1,10 +1,32 @@
 ---
 import { categories, site } from '../data/site';
 ---
-<header class="site-header"><div class="container header-inner">
-  <a class="brand" href="/" aria-label={`${site.name}, inicio`}>{site.name}</a>
-  <nav aria-label="Navegación principal"><ul>{categories.map(({ slug, name }) => <li><a href={`/${slug}/`}>{name}</a></li>)}</ul></nav>
-</div></header>
+<header class="site-header" data-site-header>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label={`${site.name}, inicio`}><span class="brand-mark" aria-hidden="true">H</span>{site.name}</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle><span aria-hidden="true"></span><span>Menú</span></button>
+    <nav id="primary-navigation" aria-label="Navegación principal" data-primary-nav hidden>
+      <ul>{categories.map(({ slug, name }) => <li><a href={`/${slug}/`}>{name}</a></li>)}</ul>
+    </nav>
+  </div>
+</header>
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  const toggle = header?.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const nav = header?.querySelector<HTMLElement>('[data-primary-nav]');
+  const mobileQuery = window.matchMedia('(max-width: 47.9375rem)');
+  const closeMenu = () => { if (toggle && nav) { toggle.setAttribute('aria-expanded', 'false'); nav.hidden = true; } };
+  toggle?.addEventListener('click', () => {
+    if (!nav) return;
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    nav.hidden = isOpen;
+  });
+  nav?.addEventListener('click', (event) => { if (mobileQuery.matches && (event.target instanceof Element) && event.target.closest('a')) closeMenu(); });
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
+  mobileQuery.addEventListener('change', (event) => { if (!event.matches && nav) { nav.hidden = false; toggle?.setAttribute('aria-expanded', 'false'); } if (event.matches) closeMenu(); });
+</script>
 <style>
-  .site-header { background: var(--color-surface); border-bottom: 1px solid var(--color-line); }.header-inner { display: flex; align-items: center; gap: var(--space-3); min-height: 4.25rem; overflow-x: auto; }.brand { color: var(--color-ink); font-size: 1.25rem; font-weight: 800; text-decoration: none; white-space: nowrap; }.site-header ul { display: flex; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }.site-header nav a { color: var(--color-muted); font-size: .875rem; font-weight: 600; text-decoration: none; white-space: nowrap; }.site-header nav a:hover { color: var(--color-brand-dark); }
+  .site-header { position: relative; z-index: 10; border-bottom: 1px solid var(--color-line); background: color-mix(in srgb, var(--color-surface) 96%, transparent); }.header-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; min-height: 4.5rem; gap: var(--space-2); }.brand { display: inline-flex; align-items: center; gap: 0.55rem; min-width: 0; color: var(--color-ink); font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; letter-spacing: -0.045em; text-decoration: none; }.brand-mark { display: grid; width: 1.7rem; height: 1.7rem; place-items: center; border-radius: 0.45rem; background: var(--color-accent); color: var(--color-ink); font-family: var(--font-sans); font-size: 0.8rem; font-weight: 900; letter-spacing: 0; }.menu-toggle { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2.75rem; padding: 0.5rem 0.7rem; border: 1px solid var(--color-line); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-ink); font-size: 0.875rem; font-weight: 800; }.menu-toggle span:first-child, .menu-toggle span:first-child::before, .menu-toggle span:first-child::after { display: block; width: 1rem; height: 2px; border-radius: 1rem; background: currentColor; content: ''; }.menu-toggle span:first-child { position: relative; }.menu-toggle span:first-child::before { position: absolute; top: -5px; }.menu-toggle span:first-child::after { position: absolute; top: 5px; } nav { grid-column: 1 / -1; padding-bottom: var(--space-3); } nav ul { display: grid; gap: 0.2rem; margin: 0; padding: 0; list-style: none; } nav a { display: block; min-height: 2.75rem; padding: 0.65rem 0.7rem; border-radius: var(--radius-sm); color: var(--color-ink-soft); font-size: 0.95rem; font-weight: 750; text-decoration: none; } nav a:hover { background: var(--color-brand-pale); color: var(--color-brand-dark); }
+  @media (min-width: 48rem) { .header-inner { display: flex; min-height: 5rem; gap: var(--space-5); }.menu-toggle { display: none; } nav, nav[hidden] { display: block; margin-left: auto; padding: 0; } nav ul { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 0.15rem; } nav a { min-height: auto; padding: 0.5rem 0.6rem; font-size: 0.83rem; } }
 </style>

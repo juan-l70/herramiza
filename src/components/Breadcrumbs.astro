@@ -6,4 +6,4 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', it
 ---
 <nav class="breadcrumbs" aria-label="Migas de pan"><ol>{items.map(item => <li>{item.href ? <a href={item.href}>{item.name}</a> : <span aria-current="page">{item.name}</span>}</li>)}</ol></nav>
 <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-<style>.breadcrumbs { margin-block: var(--space-3); color: var(--color-muted); font-size: .875rem; }.breadcrumbs ol { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; padding: 0; list-style: none; }.breadcrumbs li + li::before { margin-right: .35rem; content: '/'; }</style>
+<style>.breadcrumbs { margin-block: var(--space-3); color: var(--color-muted); font-size: .8rem; line-height: 1.4; }.breadcrumbs ol { display: flex; flex-wrap: wrap; gap: .25rem .4rem; margin: 0; padding: 0; list-style: none; }.breadcrumbs li { min-width: 0; overflow-wrap: anywhere; }.breadcrumbs li + li::before { margin-right: .4rem; color: var(--color-brand); content: '/'; }</style>
