@@ -1,15 +1,21 @@
 ---
-title: "Cómo organizar referencias con Zotero sin perder tus fuentes"
-slug: "como-organizar-referencias-con-zotero"
+title: Cómo organizar referencias con Zotero sin perder tus fuentes
+slug: como-organizar-referencias-con-zotero
 category: herramientas
-description: "Guía práctica para guardar, ordenar y revisar referencias con Zotero antes de usarlas en un trabajo."
-metaTitle: "Cómo organizar referencias con Zotero paso a paso"
-metaDescription: "Aprende a guardar fuentes con Zotero, crear colecciones útiles y revisar sus datos antes de citar."
+description: Guía práctica para guardar, ordenar y revisar referencias con
+  Zotero antes de usarlas en un trabajo.
+metaTitle: Cómo organizar referencias con Zotero paso a paso
+metaDescription: Aprende a guardar fuentes con Zotero, crear colecciones útiles
+  y revisar sus datos antes de citar.
 publishedAt: 2026-11-02
-author: "Equipo Herramiza"
-tags: ["zotero", "referencias", "investigacion", "estudiantes"]
+author: Equipo Herramiza
+tags:
+  - zotero
+  - referencias
+  - investigacion
+  - estudiantes
 featured: false
-draft: true
+draft: false
 ---
 
 Cuando investigas para un trabajo, el problema no suele ser encontrar un enlace: es poder volver a la fuente correcta, entender por qué la guardaste y citarla con datos revisados. Zotero es una herramienta para reunir y organizar referencias bibliográficas, pero funciona mejor si adoptas un método sencillo desde el principio.
