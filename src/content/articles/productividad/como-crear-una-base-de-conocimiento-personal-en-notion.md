@@ -1,15 +1,21 @@
 ---
-title: "Cómo crear una base de conocimiento personal en Notion"
-slug: "como-crear-una-base-de-conocimiento-personal-en-notion"
+title: Cómo crear una base de conocimiento personal en Notion
+slug: como-crear-una-base-de-conocimiento-personal-en-notion
 category: productividad
-description: "Crea una base de conocimiento sencilla en Notion para encontrar notas, recursos e ideas sin acumular páginas sueltas."
-metaTitle: "Cómo crear una base de conocimiento personal en Notion"
-metaDescription: "Guía práctica para organizar notas y recursos en una base de Notion con propiedades, vistas y filtros útiles."
+description: Crea una base de conocimiento sencilla en Notion para encontrar
+  notas, recursos e ideas sin acumular páginas sueltas.
+metaTitle: Cómo crear una base de conocimiento personal en Notion
+metaDescription: Guía práctica para organizar notas y recursos en una base de
+  Notion con propiedades, vistas y filtros útiles.
 publishedAt: 2026-11-02
-author: "Equipo Herramiza"
-tags: ["notion", "notas", "productividad", "organizacion"]
+author: Equipo Herramiza
+tags:
+  - notion
+  - notas
+  - productividad
+  - organizacion
 featured: false
-draft: true
+draft: false
 ---
 
 Una base de conocimiento personal no es una colección de notas perfectas. Es un lugar al que puedes volver cuando necesitas recuperar una idea, una fuente, una decisión o un recurso. En Notion, una base de datos puede servir como punto de entrada porque reúne páginas y permite verlas de distintas formas.
